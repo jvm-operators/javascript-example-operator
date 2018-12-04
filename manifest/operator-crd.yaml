@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: spark-operator
+  name: javascript-example-operator
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: spark-operator-edit-resources
+  name: javascript-example-operator-edit-resources
   namespace: default
 roleRef:
   kind: ClusterRole
@@ -15,15 +15,15 @@ roleRef:
   apiGroup: ""
 subjects:
   - kind: ServiceAccount
-    name: spark-operator
+    name: javascript-example-operator
     namespace: myproject
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: spark-operator
+  name: javascript-example-operator
   labels: &default-labels
-    app.kubernetes.io/name: spark-operator
+    app.kubernetes.io/name: javascript-example-operator
     app.kubernetes.io/version: v0.1.5-v1alpha1
 spec:
   replicas: 1
@@ -35,10 +35,10 @@ spec:
     metadata:
       labels: *default-labels
     spec:
-      serviceAccountName: spark-operator
+      serviceAccountName: javascript-example-operator
       containers:
-      - name: spark-operator
-        image: quay.io/radanalyticsio/spark-operator:latest-released
+      - name: javascript-example-operator
+        image: radanalyticsio/javascript-example-operator:latest
         env:
         - name: CRD
           value: "true"
