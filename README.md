@@ -86,6 +86,7 @@ my-spark-cluster
 Hello from JavaScript, added my-spark-cluster
 ...
 ```
+Notice that `Hello from JavaScript..` was declared above in the JavaScript code in the `onAdd()` method.
 
 
 ## Notes
