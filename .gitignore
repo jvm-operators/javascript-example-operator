@@ -127,6 +127,7 @@ openshift.local.clusterup
 
 
 abstract-operator
+spark-operator
 
 # spark shell
 metastore_db/
